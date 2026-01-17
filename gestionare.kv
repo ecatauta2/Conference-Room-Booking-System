@@ -1,0 +1,64 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<Gestionare>:
+    name: 'gestionare'
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+
+        MDNavigationRail:
+
+            visible: content_manager.current not in ['loginScreen', 'signinScreen']
+            opacity: 1 if self.visible else 0
+            anchor: "center"
+            md_bg_color: get_color_from_hex("#DDB2B5")
+            selected_icon_color: [0, 0, 1, 0.7] # Negru semi-transparent
+
+            MDNavigationRailMenuButton:
+                icon: "menu"
+
+            MDNavigationRailItem:
+                text: "Dashbord"
+                icon: "monitor-dashboard"
+                on_release: root.schimbaLaPag1()
+
+            MDNavigationRailItem:
+                text: "Rezervari"
+                icon: "account-clock"
+                on_release:root.schimbaLaRezervari()
+
+            MDNavigationRailItem:
+                text: "Profil"
+                icon: "account"
+                on_release: root.schimbaLaProfil()
+
+            MDNavigationRailItem:
+                text: "Log Out"
+                icon: "cog"
+                on_release: root.logout()
+
+        # ScreenManager - DINAMIC
+        ScreenManager:
+            id: content_manager
+            transition: FadeTransition(duration=.2, clearcolor=app.theme_cls.bg_dark)
+
+            # Ecranele de Conținut
+            LoginScreen:
+                name: 'loginScreen'
+            SigninScreen:
+                name: 'signinScreen'
+            PrimulEcran:
+                name: 'primulEcran'
+            PrimaSala:
+                name: 'primaSala'
+            ADouaSala:
+                name: 'adouaSala'
+            ATreiaSala
+                name: 'atreiaSala'
+            ColectareDate
+                name: 'colectareDate'
+            Rezervari:
+                name: 'rezervari'
+            ProfilScreen:  # <--- ADAUGĂ ASTA
+                name: 'profilScreen'

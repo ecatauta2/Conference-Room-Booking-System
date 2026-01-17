@@ -1,0 +1,6 @@
+connection~=2021.7.20
+oracledb~=3.4.1
+Kivy~=2.3.1
+kivymd~=1.2.0
+geopy~=2.4.1
+kivy-garden.mapview

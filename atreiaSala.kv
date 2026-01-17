@@ -1,0 +1,179 @@
+
+<ATreiaSala>:
+    name : 'atreiaSala'
+    FloatLayout:
+        Image:
+            source: "vanila2.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "10dp"
+
+
+
+            MDLabel:
+                text: "Conference Room Podul cu Lanturi"
+                size_hint_y: None
+                height: self.texture_size[1]
+                font_style: "H6"
+                halign: 'center'
+
+
+            ScrollView:
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    pos_hint: {'center_x': 0.6, 'center_y': 0.5}
+                    size_hint_x:1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "20dp"
+                    padding: "20dp"
+
+                    MDCard:
+                        size_hint: 1, None
+                        height: "1300dp"
+                        radius: [20]
+                        padding: "10dp"
+                        md_bg_color: (1, 1, 1, .3)
+                        shadow_offset: (0, 1)
+                        shadow_softness: 3
+                        line_color: (1, 1, 1, 1)
+                        line_width: 1.3
+
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            pos_hint: {'center_x': .5, 'center_y':.60}
+                            size_hint_x:1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            spacing: "20dp"
+                            padding: "20dp"
+
+                            FitImage:
+                                source: "PodulCuLanturi.png"
+                                size_hint_y: None
+                                height: "500dp"
+                                pos_hint: {"top": .5}
+                                radius: "36dp", "36dp", 0, 0
+
+                            MDLabel:
+                                text: "Descriere Generală:"
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "21dp"
+                                halign: 'left'
+
+                            MDLabel:
+                                text: "Sala de conferințe păstrează același aspect medieval ca întregul complex."
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "18dp"
+                                halign: 'left'
+                            MDLabel:
+                                text: "Dotări & Facilități (Corporate):"
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "21dp"
+                                halign: 'left'
+
+                            MDLabel:
+                                text:"- Conexiune la internet de mare viteză.\n- Sistem audio propriu.\n- Proiector de imagine pe perete (la care se pot lega diverse sisteme de difuzare).\n- Echipamente audio-video (incluzând ecran de proiecţie, videoproiector, flipchart, consumabile, microfon, sistem de sonorizare).\n- Alte facilități generale ale complexului: Hotel de 4 stele, restaurant, locuri de parcare, etc.."
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "18dp"
+                                halign: 'left'
+
+                            MDLabel:
+                                text: "Capacitate:"
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "21dp"
+                                halign: 'left'
+                            MDLabel:
+                                text:"-> Poate acomoda până la 120 de persoane.\n-> special pentru organizarea evenimentelor de până la 100 de persoane."
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                                font_size: "18dp"
+                                halign: 'left'
+
+
+                            #harta
+                            MDCard:
+                                size_hint: 1, None
+                                height: "451dp"
+                                radius: [5]
+                                padding: "10dp"
+                                md_bg_color: (1, 1, 1, .3)
+                                shadow_offset: (0, 1)
+                                shadow_softness: 3
+                                line_color: (1, 1, 1, 1)
+                                line_width: 1.3
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    size_hint_y: None
+                                    height: "450dp"  # ATENȚIE: 30dp este prea mic pentru a vedea harta!
+                                    spacing: "20dp"
+                                    padding: "20dp"
+
+                                    # Apelează metoda Python după ce s-a construit acest bloc KV
+                                    #on_kv_post: root.map_initialized()
+
+                                    MapView:
+                                        id: map_widget_3
+                                        lat: 50
+                                        lon: 30
+                                        zoom: 10
+
+                                    MDBoxLayout:
+                                        orientation: 'horizontal'
+                                        size_hint: None, None
+                                        size: "48dp", "90dp" # Dimensiunea containerului
+                                        spacing: "5dp"
+
+                                        # Poziționare: Ancorat în dreapta, puțin deasupra fundului
+                                        pos_hint: {'right': 0.95, 'y': 0.08}
+
+                                        # Butonul Zoom IN
+                                        MDIconButton:
+                                            icon: "plus" # Icoana pentru Zoom In
+                                            theme_icon_color: "Custom"
+                                            icon_color: 0, 0, 0, 1 # Culoarea icoanei (Negru)
+                                            md_bg_color: 1, 1, 1, 1 # Culoarea de fundal (Alb)
+                                            # Acțiunea: Mărește proprietatea 'zoom' a widget-ului map_widget
+                                            on_release: map_widget_3.zoom += 1
+
+                                        # Butonul Zoom OUT
+                                        MDIconButton:
+                                            icon: "minus" # Icoana pentru Zoom Out
+                                            theme_icon_color: "Custom"
+                                            icon_color: 0, 0, 0, 1
+                                            md_bg_color: 1, 1, 1, 1
+                                            # Acțiunea: Micșorează proprietatea 'zoom' a widget-ului map_widget
+                                            on_release: map_widget_3.zoom -= 1
+
+                    MDTextField:
+                        id: data_rezervarii
+                        hint_text: "Alege Data Rezervării"
+                        icon_right: "calendar"
+                        mode: "rectangle"
+                        readonly: True  # Nu lăsăm userul să scrie de mână
+                        on_focus:
+                            if self.focus: app.root.ids.content_manager.get_screen('colectareDate').arata_calendar(self)
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        pos_hint: {'center_x': .5, 'y': 0.05}
+                        size_hint_x: 0.9
+                        adaptive_height: True
+                        spacing: "20dp"
+                        padding: "0dp"
+
+                        MDRaisedButton:
+                            text: "Rezerva sala"
+                            size_hint_x: 1
+                            on_release: root.rezerva_acum()

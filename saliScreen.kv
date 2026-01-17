@@ -1,0 +1,59 @@
+<SaliScreen>:
+    name: 'saliScreen'
+
+    # Containerul rădăcină al ecranului SaliScreen
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "10dp"
+        spacing: "10dp"
+        # Eliminăm pos_hint de pe containerul exterior pentru a ocupa tot spațiul
+
+        # MDLabel adăugat pentru text fix, deasupra zonei scrollabile
+        MDLabel:
+            text: "Sali"
+            size_hint_y: None
+            height: self.texture_size[1]
+            font_style: "H6"
+            halign:'center'
+
+        # Zona Scrollabilă
+        ScrollView:
+
+            # Containerul de conținut (unde pui toate cardurile, listele, etc.)
+            MDBoxLayout:
+                orientation: "vertical" # Setăm orientarea verticală
+
+                # ESENȚIAL PENTRU SCROLL VERTICAL:
+                size_hint_y: None
+                height: self.minimum_height
+
+                spacing: "20dp"
+                padding: "20dp"
+
+                # CARD (Exemplu de Conținut)
+                MDCard:
+                    size_hint_y: None
+                    height: "250dp"
+                    radius: [20]
+                    padding: "20dp"
+                    md_bg_color: (1, 0, 1, .12)
+                    shadow_offset: (0, -1)
+                    shadow_softness: 3
+                    line_color: (1, 1, 1, .3)
+                    line_width: 1.3
+
+                    MDLabel:
+                        id: outNr
+                        text: "CARD SĂLI 1"
+                        font_size: "30 dp"
+                        halign: "center"
+                        valign: "middle"
+
+                # Poți adăuga mai multe carduri aici pentru a testa scroll-ul
+                MDCard:
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    MDLabel:
+                        text: "CARD SĂLI 2"
+                        halign: "center"

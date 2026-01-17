@@ -1,0 +1,140 @@
+
+
+<SigninScreen>:
+    name : 'signinScreen'
+    FloatLayout:
+        Image:
+            source: "vanila2.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDCard:
+            md_bg_color: (1, 1, 1, .12)
+            radius:80,0,80,0
+            pos_hint: {'center_x': .5, 'top': 0.9}
+            size_hint: (.85, .85)
+            shadow_offset: (0, -1)
+            shadow_softness: 3
+            line_color: (1, 1, 1, .5)
+            line_width: 1.3
+            MDBoxLayout:
+                orientation:'vertical'
+            MDLabel:
+                text: "Sign In"
+                font_size:self.height * 0.05
+                pos_hint: {'center_x': 0.50, 'center_y': 0.8} #plasare widget sus-jos, stanga dreapta
+
+        MDLabel:
+            id:feedbackSignin
+            text: " "
+            size_hint:.3, None
+            pos_hint:{'center_x': 0.6, 'center_y': 0.65}
+
+
+
+
+
+    #-----------------email
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: "12dp"
+            padding: "20dp"
+            adaptive_height: True
+            pos_hint: {'center_x': .5, 'center_y': 0.67}
+            size_hint:(.6, .35)
+
+            Image:
+                source: "email.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                size: 30, 30  # dimensiunea în pixeli
+                halign: "center"
+
+            MDTextField:
+                id: email_int
+                hint_text:"Email"
+                mode: "rectangle"
+                theme_text_color: "Custom"
+                text_color_focus: 0, 0, 0, 1
+                text_color_normal: 0.5, 0.5, 0.5, 1
+                line_color_normal: 0, 0, 0, 0
+                fill_color_normal: 1, 1, 1, 0
+                size_hint: (.2, None)
+                height: 40
+                multiline: False
+
+        #---------------password1
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: "12dp"
+            padding: "20dp"
+            adaptive_height: True
+            pos_hint: {'center_x': .5, 'center_y': 0.57}
+            size_hint:(.6, .35)
+
+            Image:
+                source: "password.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                size: 30, 30  # dimensiunea în pixeli
+
+            MDTextField:
+                id: password_int
+                hint_text:"Password"
+                mode: "rectangle"
+                theme_text_color: "Custom"
+                text_color_focus: 0, 0, 0, 1
+                text_color_normal: 0.5, 0.5, 0.5, 1
+                line_color_normal: 0, 0, 0, 0
+                fill_color_normal: 1, 1, 1, 0
+                size_hint: (.2, None)
+                height: 40
+                multiline: False
+
+        #------------------repassword2
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: "12dp"
+            padding: "20dp"
+            adaptive_height: True
+            pos_hint: {'center_x': .5, 'center_y': 0.47}
+            size_hint:(.6, .35)
+
+            Image:
+                source: "password.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                size: 30, 30  # dimensiunea în pixeli
+
+
+            MDTextField:
+                id: repassword
+                hint_text:"Password1"
+                mode: "rectangle"
+                theme_text_color: "Custom"
+                text_color_focus: 0, 0, 0, 1
+                text_color_normal: 0.5, 0.5, 0.5, 1
+                line_color_normal: 0, 0, 0, 0
+                fill_color_normal: 1, 1, 1, 0
+                size_hint: (.2, None)
+                height: 40
+                multiline: False
+
+
+
+        MDRaisedButton:
+            id: btnInregistrare
+            text: 'Sign In'
+            size_hint:(0.30, 0.05)
+            pos_hint:{'center_x': 0.5, 'center_y': 0.25}
+            on_release: root.verificare_sign(self)
+
+
+
+
